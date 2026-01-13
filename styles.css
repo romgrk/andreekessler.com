@@ -147,7 +147,7 @@ div p {
 /* DIV HOME ANDI
 /****************************************/
 
-div img.accueil {
+img.accueil {
   width: 40%;
   padding-top: -100px;
   margin: 0 10vw 0 25vw;
@@ -158,15 +158,15 @@ div img.accueil {
 
 /***********************SECTION GALERIE*******************/
 
-div section.galerie {
+section.galerie {
   margin: 0 0 0 20vw;
 }
 
-div section.galerie article {
+section.galerie article {
   padding: 0 0 0 0;
 }
 
-div section.galerie h2 {
+section.galerie h2 {
   color: whitesmoke;
   font-size: 3vw;
   font-weight: 500;
@@ -176,20 +176,20 @@ div section.galerie h2 {
   text-align: right;
 }
 
-div section.galerie figure:hover {
+section.galerie figure:hover {
   opacity: 50%;
 }
 
-div section.galerie h2 i {
+section.galerie h2 i {
   font-size: 80%;
   /**background-color: aquamarine;**/
   padding: 0 0 0 0.75vw;
 }
 
-div section.galerie i {
+section.galerie i {
 }
 
-div section.galerie figure {
+section.galerie figure {
   width: 65%;
   display: flex;
   height: auto;
@@ -198,10 +198,10 @@ div section.galerie figure {
 
 /*******************SECTION INDIVIUEL ******************/
 
-div section {
+section {
 }
 
-div section.texte {
+section.texte {
   position: fixed;
   font-size: 140%;
   width: 20vw;
@@ -211,7 +211,7 @@ div section.texte {
   margin-left: 0;
 }
 
-div section.texte h3 {
+section.texte h3 {
   display: flex;
   padding: 0 0 1vw 0;
   text-decoration: none;
@@ -222,33 +222,33 @@ div section.texte h3 {
   text-transform: uppercase;
 }
 
-div section.texte article h4 {
+section.texte article h4 {
   font-weight: 400;
   margin-bottom: 0.5em;
   font-size: 90%;
   line-height: 125%;
 }
 
-div section.texte p {
+section.texte p {
   opacity: 70%;
 }
 
-div section.texte article p span {
+section.texte article p span {
   font-style: italic;
   opacity: 40%;
 }
 
-div section.image {
+section.image {
   margin: 0 0 0 23vw;
   height: auto;
   width: 100%;
 }
 
-div section.image figure {
+section.image figure {
   padding: 1.5vw 0 0 0;
 }
 
-div section.image i {
+section.image i {
   font-size: 4vw;
   padding: 0 0 1vw 28vw;
   bottom: 0;
@@ -292,13 +292,13 @@ div.grille section figure {
 
 /***********************ASIDE*******************/
 
-div aside {
+aside {
   flex-basis: 1%;
 }
 
 /***********************Footer*******************/
 
-Footer {
+footer {
 }
 
 /**************************************

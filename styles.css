@@ -74,6 +74,16 @@ h6 {
   font-weight: 400;
 }
 
+.sm-hidden {
+  display: none;
+}
+
+@media screen and (max-width: 680px) {
+  .sm-hidden {
+    display: block;
+  }
+}
+
 /****************************************/
 /* BODY
 /****************************************/
@@ -116,38 +126,23 @@ header video {
   display: block;
 }
 
-/****************************************/
-/* DIV wrapper
-/****************************************/
-
-.wrapper {
-  padding-top: 100px;
-  margin: 0 10vw 0 10vw;
-  display: inline-flex; /*****flex;    aléatoire sauf siiiiiii flex basis dans chq objet****/
-}
-
-.wrapper p {
-  margin-bottom: 0.5em;
-  opacity: 100%;
+.home header .logo {
+  display: none;
 }
 
 /****************************************/
-/* DIV HOME ANDI
+/* Navigation links
 /****************************************/
 
-img.accueil {
-  width: 40%;
-  padding-top: -100px;
-  margin: 0 10vw 0 25vw;
-  background-color: orange;
-  display: block;
-  justify-content: space-around;
+.nav-link {
+  text-decoration: none;
+  color: #b09500;
+  font-weight: 300;
+  transition: all 0.5s;
 }
 
-/***********************ASIDE*******************/
-
-aside {
-  flex-basis: 1%;
+.nav-link:hover {
+  color: #ffd800;
 }
 
 /**************************************
@@ -157,26 +152,7 @@ aside {
 nav {
   display: flex;
   position: block;
-  /* box-sizing: border-box;*/
-  font-size: 100%;
-  color: green;
   z-index: 1;
-}
-
-nav:hover {
-  font-size: 90%;
-}
-
-nav ul {
-  list-style-type: none;
-  /*background-color:*/
-}
-
-nav ul li a {
-  /***** le lien*****/
-
-  text-decoration: none;
-  color: gold;
 }
 
 header nav {
@@ -184,21 +160,6 @@ header nav {
   top: 1vw;
   left: 10vw;
   font-weight: 100;
-}
-
-/*header nav ul.insta{
-    display: flex;
-    z-index: 100;
-    color: gold;
-    background-color: aqua;
-    top:0;
-    right: 0;
-    font-size: 200%; 
-
-}*/
-
-header nav span {
-  font-weight: 400;
 }
 
 div aside nav {
@@ -225,6 +186,40 @@ footer nav span {
 
 footer nav ul.mobile {
   display: none;
+}
+
+/***********************ASIDE*******************/
+
+aside {
+  flex-basis: 1%;
+}
+
+/****************************************/
+/* DIV wrapper
+/****************************************/
+
+.wrapper {
+  padding-top: 100px;
+  margin: 0 10vw 0 10vw;
+  display: inline-flex; /*****flex;    aléatoire sauf siiiiiii flex basis dans chq objet****/
+}
+
+.wrapper p {
+  margin-bottom: 0.5em;
+  opacity: 100%;
+}
+
+/****************************************/
+/* DIV HOME ANDI
+/****************************************/
+
+img.accueil {
+  width: 40%;
+  padding-top: -100px;
+  margin: 0 10vw 0 25vw;
+  background-color: orange;
+  display: block;
+  justify-content: space-around;
 }
 
 /***********************SECTION GALERIE*******************/

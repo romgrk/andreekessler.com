@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/romgrk/andreekessler.com/issues"
   },
-  "homepage": "https://github.com/romgrk/andreekessler.com#readme"
+  "homepage": "https://github.com/romgrk/andreekessler.com#readme",
+  "dependencies": {
+    "nodemon": "^3.1.11"
+  }
 }

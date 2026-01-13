@@ -31,9 +31,7 @@ figure {
 }
 
 /******************************************************************
-******************************************************************
-CSS PRÉDÉFINIES
-******************************************************************
+* Global styles
 ******************************************************************/
 
 /* les images ne seront jamais plus grandes que le contenant <figure> qui les contient */
@@ -76,16 +74,6 @@ h6 {
   font-weight: 400;
 }
 
-/************************************************************************************************************************************
-/************************************************************************************************************************************
-PLACEZ LES DÉFINITIONS CSS DE VOS PAGES SOUS CETTE LIGNE
-PLACEZ LES DÉFINITIONS CSS DE VOS PAGES SOUS CETTE LIGNE
-PLACEZ LES DÉFINITIONS CSS DE VOS PAGES SOUS CETTE LIGNE
-PLACEZ LES DÉFINITIONS CSS DE VOS PAGES SOUS CETTE LIGNE
-PLACEZ LES DÉFINITIONS CSS DE VOS PAGES SOUS CETTE LIGNE
-/************************************************************************************************************************************
-************************************************************************************************************************************/
-
 /****************************************/
 /* BODY
 /****************************************/
@@ -105,7 +93,7 @@ body p {
 }
 
 /****************************************/
-/* header
+/* Header
 /****************************************/
 
 header {
@@ -132,13 +120,13 @@ header video {
 /* DIV wrapper
 /****************************************/
 
-div {
+.wrapper {
   padding-top: 100px;
   margin: 0 10vw 0 10vw;
   display: inline-flex; /*****flex;    aléatoire sauf siiiiiii flex basis dans chq objet****/
 }
 
-div p {
+.wrapper p {
   margin-bottom: 0.5em;
   opacity: 100%;
 }

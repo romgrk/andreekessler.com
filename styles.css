@@ -156,6 +156,89 @@ img.accueil {
   justify-content: space-around;
 }
 
+/***********************ASIDE*******************/
+
+aside {
+  flex-basis: 1%;
+}
+
+/**************************************
+/* NAV
+/*************************************/
+
+nav {
+  display: flex;
+  position: block;
+  /* box-sizing: border-box;*/
+  font-size: 100%;
+  color: green;
+  z-index: 1;
+}
+
+nav:hover {
+  font-size: 90%;
+}
+
+nav ul {
+  list-style-type: none;
+  /*background-color:*/
+}
+
+nav ul li a {
+  /***** le lien*****/
+
+  text-decoration: none;
+  color: gold;
+}
+
+header nav {
+  position: fixed;
+  top: 1vw;
+  left: 10vw;
+  font-weight: 100;
+}
+
+/*header nav ul.insta{
+    display: flex;
+    z-index: 100;
+    color: gold;
+    background-color: aqua;
+    top:0;
+    right: 0;
+    font-size: 200%; 
+
+}*/
+
+header nav span {
+  font-weight: 400;
+}
+
+div aside nav {
+  position: fixed;
+  right: 1.5vw;
+  bottom: 20vh;
+  box-sizing: border-box;
+  font-weight: 100;
+}
+div aside nav span {
+  font-weight: 400;
+}
+
+footer nav {
+  position: fixed;
+  bottom: 1.2vw;
+  left: 3vw;
+  font-weight: 100;
+}
+
+footer nav span {
+  font-weight: 400;
+}
+
+footer nav ul.mobile {
+  display: none;
+}
+
 /***********************SECTION GALERIE*******************/
 
 section.galerie {
@@ -290,93 +373,6 @@ div.grille section figure {
   opacity: 90%;
 }
 
-/***********************ASIDE*******************/
-
-aside {
-  flex-basis: 1%;
-}
-
-/***********************Footer*******************/
-
-footer {
-}
-
-/**************************************
-NAV
-**************************************/
-
-nav {
-  display: flex;
-  position: block;
-  /* box-sizing: border-box;*/
-  font-size: 100%;
-  color: green;
-  z-index: 1;
-}
-
-nav:hover {
-  font-size: 90%;
-}
-
-nav ul {
-  list-style-type: none;
-  /*background-color:*/
-}
-
-nav ul li a {
-  /***** le lien*****/
-
-  text-decoration: none;
-  color: gold;
-}
-
-header nav {
-  position: fixed;
-  top: 1vw;
-  left: 10vw;
-  font-weight: 100;
-}
-
-/*header nav ul.insta{
-    display: flex;
-    z-index: 100;
-    color: gold;
-    background-color: aqua;
-    top:0;
-    right: 0;
-    font-size: 200%; 
-
-}*/
-
-header nav span {
-  font-weight: 400;
-}
-
-div aside nav {
-  position: fixed;
-  right: 1.5vw;
-  bottom: 20vh;
-  box-sizing: border-box;
-  font-weight: 100;
-}
-div aside nav span {
-  font-weight: 400;
-}
-
-footer nav {
-  position: fixed;
-  bottom: 1.2vw;
-  left: 3vw;
-  font-weight: 100;
-}
-
-footer nav span {
-  font-weight: 400;
-}
-
-footer nav ul.mobile {
-  display: none;
-}
 /******************************************************/
 /*  FORMULAIRE /  CONTACT
 /******************************************************/

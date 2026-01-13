@@ -8,7 +8,8 @@ AUTOMATIQUEMENT PAR LE FICHIER NORMALIZE.CSS
 ******************************************************************
 ******************************************************************/
 
-/*retire les padding et margin */
+body,
+html,
 aside,
 section,
 article,
@@ -74,13 +75,21 @@ h6 {
   font-weight: 400;
 }
 
-.sm-hidden {
+.sm-only {
   display: none;
 }
+@media screen and (max-width: 680px) {
+  .sm-only {
+    display: block;
+  }
+}
 
+.sm-hidden {
+  display: block;
+}
 @media screen and (max-width: 680px) {
   .sm-hidden {
-    display: block;
+    display: none;
   }
 }
 
@@ -177,15 +186,8 @@ footer nav {
   position: fixed;
   bottom: 1.2vw;
   left: 3vw;
-  font-weight: 100;
-}
-
-footer nav span {
+  padding: 0.5rem;
   font-weight: 400;
-}
-
-footer nav ul.mobile {
-  display: none;
 }
 
 /***********************ASIDE*******************/

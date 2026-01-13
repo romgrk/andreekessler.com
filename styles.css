@@ -1,7 +1,6 @@
 @charset "UTF-8";
 /* CSS Document */
 
-
 /******************************************************************
 ******************************************************************
 NE PAS MODIFIER / CES LIGNES ENLEVENT LES PADDING ET MARGIN AJOUTÉS
@@ -10,7 +9,26 @@ AUTOMATIQUEMENT PAR LE FICHIER NORMALIZE.CSS
 ******************************************************************/
 
 /*retire les padding et margin */
-aside, section, article, footer, header, div, p, h1, h2, h3, h4, h5, h6, ol, ul, li, figure { padding:0; margin:0; }
+aside,
+section,
+article,
+footer,
+header,
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+li,
+figure {
+  padding: 0;
+  margin: 0;
+}
 
 /******************************************************************
 ******************************************************************
@@ -19,23 +37,44 @@ CSS PRÉDÉFINIES
 ******************************************************************/
 
 /* les images ne seront jamais plus grandes que le contenant <figure> qui les contient */
-img { max-width:100%; height: auto;}
-video { max-width:100%; height: auto;}
+img {
+  max-width: 100%;
+  height: auto;
+}
+video {
+  max-width: 100%;
+  height: auto;
+}
 
 /* ajoutez cette classe si il n'y a qu'une seule image */
 /* dans le <figure> et qu'un espace fin apparait sous l'image */
 /* par exemple <img class="no-border-down" src="..." */
-img.no-border-down { display:block;} 
+img.no-border-down {
+  display: block;
+}
 
 /* dans le cas où le float est requis */
-div.pousse { clear:both; width:0; height:0; overflow:hidden;}
+div.pousse {
+  clear: both;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
 
 /* polices par défaut */
-body { font-family: Helvetica, Arial, sans-serif; }
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
 
 /* retire le gras par défaut des titres */
-h1, h2, h3, h4, h5, h6 { font-weight: 400;}
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
 
 /************************************************************************************************************************************
 /************************************************************************************************************************************
@@ -47,332 +86,256 @@ PLACEZ LES DÉFINITIONS CSS DE VOS PAGES SOUS CETTE LIGNE
 /************************************************************************************************************************************
 ************************************************************************************************************************************/
 
-
 /****************************************/
 /* BODY
 /****************************************/
 
-body { 
-    font-size:1.25vw;
-    background-color:#0A0A0A;
-    font-family:'Barlow Condensed', sans-serif;   
-} 
+body {
+  font-size: 1.25vw;
+  background-color: #0a0a0a;
+  font-family: 'Barlow Condensed', sans-serif;
+}
 
-
-body p { 
-    font-weight:400;
-    line-height: 145%;
-	font-size: 1vw;
-	font-family:'Barlow ', sans-serif;  
-	color: whitesmoke;
-} 
-
+body p {
+  font-weight: 400;
+  line-height: 145%;
+  font-size: 1vw;
+  font-family: 'Barlow ', sans-serif;
+  color: whitesmoke;
+}
 
 /****************************************/
 /* header
 /****************************************/
 
-
-
-header { 
- 
-    width: 100%;
-    position: fixed;
-    z-index: 1000;
-    height:7vw;
-	padding-bottom: 20px;
-
-            }
-
-
+header {
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  height: 7vw;
+  padding-bottom: 20px;
+}
 
 header figure {
-	
-	width: 8%;
-
+  width: 8%;
 }
 
-header video
-{
-    	padding: .5vh 0 0.5vh 0;
-        box-sizing: border-box;
-        margin: 15vh auto 15vh auto;
-    height: 70vh;
-    display: block;
-    
-
+header video {
+  padding: 0.5vh 0 0.5vh 0;
+  box-sizing: border-box;
+  margin: 15vh auto 15vh auto;
+  height: 70vh;
+  display: block;
 }
-
-
-
 
 /****************************************/
 /* DIV wrapper
 /****************************************/
 
-
 div {
-	padding-top: 100px;
-    margin: 0 10vw 0 10vw;
-	display:inline-flex;/*****flex;    aléatoire sauf siiiiiii flex basis dans chq objet****/
-
-    }
-
-
-div p {
-  margin-bottom: .5em;
-	opacity: 100%;
+  padding-top: 100px;
+  margin: 0 10vw 0 10vw;
+  display: inline-flex; /*****flex;    aléatoire sauf siiiiiii flex basis dans chq objet****/
 }
 
-	
+div p {
+  margin-bottom: 0.5em;
+  opacity: 100%;
+}
+
 /****************************************/
 /* DIV HOME ANDI
 /****************************************/
 
 div img.accueil {
-	width: 40%;
-	padding-top: -100px;
-	margin: 0 10vw 0 25vw;
-	background-color: orange;
-	display:block;
-	justify-content: space-around;
-	
+  width: 40%;
+  padding-top: -100px;
+  margin: 0 10vw 0 25vw;
+  background-color: orange;
+  display: block;
+  justify-content: space-around;
 }
 
-	/***********************SECTION GALERIE*******************/
+/***********************SECTION GALERIE*******************/
 
-	div section.galerie {
-                    margin:0 0 0 20vw;
-
-
-
-}
-    
-    div section.galerie  article{
-        padding:  0 0 0 0;
-		
-
+div section.galerie {
+  margin: 0 0 0 20vw;
 }
 
-    div section.galerie h2{
-        color:whitesmoke;
-        font-size: 3vw;
-        font-weight: 500;
-        position: absolute;
-        text-transform: uppercase;
-        padding:  0.5vw 0 0 1vw;
-		text-align: right;
-        
-    
+div section.galerie article {
+  padding: 0 0 0 0;
 }
 
-    div section.galerie figure:hover{
-       opacity: 50%;	
-
+div section.galerie h2 {
+  color: whitesmoke;
+  font-size: 3vw;
+  font-weight: 500;
+  position: absolute;
+  text-transform: uppercase;
+  padding: 0.5vw 0 0 1vw;
+  text-align: right;
 }
 
-
-    div section.galerie h2 i{
-       font-size: 80%;
-		/**background-color: aquamarine;**/
-        padding:0 0 0 0.75vw ;
-
-		}
-        
-
-    div section.galerie i{
-
+div section.galerie figure:hover {
+  opacity: 50%;
 }
 
-		div section.galerie figure{
-			width: 65%;
-            display: flex;
-			height: auto;
-			opacity: 100%;
-
+div section.galerie h2 i {
+  font-size: 80%;
+  /**background-color: aquamarine;**/
+  padding: 0 0 0 0.75vw;
 }
 
+div section.galerie i {
+}
+
+div section.galerie figure {
+  width: 65%;
+  display: flex;
+  height: auto;
+  opacity: 100%;
+}
 
 /*******************SECTION INDIVIUEL ******************/
 
-div section{ 
-
+div section {
 }
 
-
-    div section.texte{
-        position: fixed;
-        font-size: 140%;
-        width: 20vw;
-        color: whitesmoke;
-        padding: 1.5vw 0 0 0 ;
-        bottom: 5vh;
-        margin-left: 0;
-
-        }  
-
-
-    div section.texte h3 {
-	display: flex;
-	padding: 0 0 1vw 0;
-    text-decoration: none;  
-    color: gold;
-    align-content: center;
-    font-size: 170%;
-    font-weight: 400;   
-    text-transform: uppercase;   
-
+div section.texte {
+  position: fixed;
+  font-size: 140%;
+  width: 20vw;
+  color: whitesmoke;
+  padding: 1.5vw 0 0 0;
+  bottom: 5vh;
+  margin-left: 0;
 }
 
+div section.texte h3 {
+  display: flex;
+  padding: 0 0 1vw 0;
+  text-decoration: none;
+  color: gold;
+  align-content: center;
+  font-size: 170%;
+  font-weight: 400;
+  text-transform: uppercase;
+}
 
-
-
-    div section.texte article h4{
-        font-weight: 400;
-        margin-bottom: .5em;
-		font-size: 90%;
-        line-height: 125%;
- 
-        
-}    
+div section.texte article h4 {
+  font-weight: 400;
+  margin-bottom: 0.5em;
+  font-size: 90%;
+  line-height: 125%;
+}
 
 div section.texte p {
-       	opacity: 70%;
-
-        } 
-
-
-    div section.texte article p span{
-        font-style: italic;
-		opacity: 40%;
+  opacity: 70%;
 }
 
-
-    div section.image {
-    margin: 0 0 0 23vw;
-	height: auto;
-    width: 100%;
-		
-
+div section.texte article p span {
+  font-style: italic;
+  opacity: 40%;
 }
 
-
-    div section.image figure {
-	padding: 1.5vw 0 0  0;
-
+div section.image {
+  margin: 0 0 0 23vw;
+  height: auto;
+  width: 100%;
 }
 
-    div section.image i {
-        font-size: 4vw;
-        padding:0  0 1vw 28vw;
-        bottom: 0;
-        position: fixed;
-        color: whitesmoke;
-        z-index: 100000;
+div section.image figure {
+  padding: 1.5vw 0 0 0;
 }
 
-
-	/***********************SECTION À PROPOS*******************/
-
-	div.grille {
-        margin: 0 0 0 20vw;
-    
-}
-    
-    div.grille section {	
-
-
-		
-}
-    div.grille section article{
-        position: fixed;  
-        width: 25%;
-        top:30vh;
-        margin: 0 0 0 1vw;
-
-}
-    div.grille section article h2{
-	padding: 0 0 0.5vw 0;
-
-
+div section.image i {
+  font-size: 4vw;
+  padding: 0 0 1vw 28vw;
+  bottom: 0;
+  position: fixed;
+  color: whitesmoke;
+  z-index: 100000;
 }
 
-    div.grille section article h3{
-	color: gold;
-	padding: 0 0 0.5vw 0;
-}
-    div.grille section article p{
-    text-align: left;
+/***********************SECTION À PROPOS*******************/
+
+div.grille {
+  margin: 0 0 0 20vw;
 }
 
-
- div.grille section figure{
-  	width: 30%;
-    position: fixed;  
-    margin: 20vh 12vw 0 30vw ;
-	opacity: 90%;
+div.grille section {
+}
+div.grille section article {
+  position: fixed;
+  width: 25%;
+  top: 30vh;
+  margin: 0 0 0 1vw;
+}
+div.grille section article h2 {
+  padding: 0 0 0.5vw 0;
 }
 
-
-	/***********************ASIDE*******************/
-
-	div aside {
-		flex-basis:1%;
-
+div.grille section article h3 {
+  color: gold;
+  padding: 0 0 0.5vw 0;
+}
+div.grille section article p {
+  text-align: left;
 }
 
+div.grille section figure {
+  width: 30%;
+  position: fixed;
+  margin: 20vh 12vw 0 30vw;
+  opacity: 90%;
+}
 
-	/***********************Footer*******************/
+/***********************ASIDE*******************/
 
-    Footer {
-        
+div aside {
+  flex-basis: 1%;
+}
 
+/***********************Footer*******************/
+
+Footer {
 }
 
 /**************************************
 NAV
 **************************************/
 
-
-
 nav {
-    display: flex;
-    position: block;
-   /* box-sizing: border-box;*/
-    font-size:100%;
-    color:green;
-	z-index: 1; 
-    
-
+  display: flex;
+  position: block;
+  /* box-sizing: border-box;*/
+  font-size: 100%;
+  color: green;
+  z-index: 1;
 }
 
-
 nav:hover {
-
-    font-size:90%;
-
+  font-size: 90%;
 }
 
 nav ul {
-
-    list-style-type:none;
-	/*background-color:*/
+  list-style-type: none;
+  /*background-color:*/
 }
 
+nav ul li a {
+  /***** le lien*****/
 
-nav ul li a {  /***** le lien*****/
-
-    text-decoration: none;
-    color: gold;
-    
+  text-decoration: none;
+  color: gold;
 }
 
-header nav { 
-    position: fixed;
-	top: 1vw;
-    left:10vw;
-    font-weight: 100;
-            }
+header nav {
+  position: fixed;
+  top: 1vw;
+  left: 10vw;
+  font-weight: 100;
+}
 
 /*header nav ul.insta{
     display: flex;
@@ -385,67 +348,52 @@ header nav {
 
 }*/
 
+header nav span {
+  font-weight: 400;
+}
 
-header nav span{
-		font-weight: 400;
-	}
+div aside nav {
+  position: fixed;
+  right: 1.5vw;
+  bottom: 20vh;
+  box-sizing: border-box;
+  font-weight: 100;
+}
+div aside nav span {
+  font-weight: 400;
+}
 
-div aside nav { 
-    position: fixed;
-	right: 1.5vw;
-    bottom:20vh;
-    box-sizing: border-box;
-    font-weight: 100;
+footer nav {
+  position: fixed;
+  bottom: 1.2vw;
+  left: 3vw;
+  font-weight: 100;
+}
 
-    
-} 
-div aside nav span{
-		font-weight: 400;
-   
-	}
+footer nav span {
+  font-weight: 400;
+}
 
-footer nav { 
-    position: fixed;
-	bottom: 1.2vw;
-    left:3vw;
-    font-weight: 100;
-
-    
-} 
-
-footer nav span{
-		font-weight: 400;	
-
-	}
-
-footer nav ul.mobile{
-		display: none;	
-
-	}
+footer nav ul.mobile {
+  display: none;
+}
 /******************************************************/
 /*  FORMULAIRE /  CONTACT
 /******************************************************/
-   div section.contact  {
-    margin: 18vh 0 0 16vw;
-	color: whitesmoke;
-              width: 42%;
-
+div section.contact {
+  margin: 18vh 0 0 16vw;
+  color: whitesmoke;
+  width: 42%;
 }
 
-     
-    div section.contact a{
-       color: gold;
-		
-
-        } 
-    div section.contact article h2{
-	font-size: 600%;
-    font-weight: 500;   
-    text-transform: uppercase;
+div section.contact a {
+  color: gold;
 }
-          
-
-
+div section.contact article h2 {
+  font-size: 600%;
+  font-weight: 500;
+  text-transform: uppercase;
+}
 
 /****************************************/
 /* SCÉNARI0 JQUERY
@@ -455,23 +403,20 @@ footer nav ul.mobile{
 
 /* réglage de l'apparence initiale des objets avant le script jQuery */
 
-body { opacity: 0;}
-
-nav  {
-    opacity: 0;
+body {
+  opacity: 0;
 }
 
-h2  {
-    opacity: 0;
-}
-h3  {
-    opacity: 0;
+nav {
+  opacity: 0;
 }
 
-
-
-
-
+h2 {
+  opacity: 0;
+}
+h3 {
+  opacity: 0;
+}
 
 /**************************************************************
 CSS POUR DESIGN REACTIF D'UN ÉCRAN D'UN MAXIMUM DE 680px (cell)
@@ -482,231 +427,192 @@ CSS POUR DESIGN REACTIF D'UN ÉCRAN D'UN MAXIMUM DE 680px (cell)
 CSS POUR DESIGN REACTIF D'UN ÉCRAN D'UN MAXIMUM DE 680px (cell)
 *************************************************************/
 
+@media screen and (max-width: 680px) {
+  /* ne pas modifier */
+  body {
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 48px;
+  }
+  h2 {
+    font-size: 36px;
+  }
+  h3 {
+    font-size: 24px;
+  }
+  h4 {
+    font-size: 20px;
+  }
+  h5 {
+    font-size: 18px;
+  }
+  h6 {
+    font-size: 16px;
+  }
+  /* ne pas modifier */
 
-@media screen and (max-width: 680px) { 
-    
-    /* ne pas modifier */
-    body { font-size:16px; } 
-    h1 { font-size:48px; }
-    h2 { font-size:36px; }
-    h3 { font-size:24px; }
-    h4 { font-size:20px; }
-    h5 { font-size:18px; }
-    h6 { font-size:16px; }
-    /* ne pas modifier */
-    
-    /* CSS ENTRE CES LIGNES */
-    /* CSS ENTRE CES LIGNES */
+  /* CSS ENTRE CES LIGNES */
+  /* CSS ENTRE CES LIGNES */
 
- 
+  /****************************************/
+  /* DIV wrapper
 /****************************************/
-/* DIV wrapper
-/****************************************/
-header video {
-	display: none;
+  header video {
+    display: none;
+  }
 
-    }
-
- header img.mobile{
-	display: flex;
+  header img.mobile {
+    display: flex;
     justify-content: space-around;
     align-content: center;
     margin: 20vh auto 0 auto;
     height: 50vh;
     width: auto;
     display: block;
+  }
 
-    }
-        
-header  {
-	width: 100vw;
+  header {
+    width: 100vw;
     right: 0;
     height: 13vw;
     position: fixed;
+  }
 
-    }
-	
-	
-	
-header figure {
-	background-color: #0F0F0F;
-	width: 12vw;
+  header figure {
+    background-color: #0f0f0f;
+    width: 12vw;
     position: fixed;
     right: 1vw;
-	top:1vw;
-	padding: .5vw;
+    top: 1vw;
+    padding: 0.5vw;
     box-sizing: border-box;
     height: auto;
+  }
+  header nav {
+    display: none;
+  }
+  header nav ul {
+    display: none;
+  }
 
+  aside {
+    display: none;
+  }
 
-    }
-header nav {
-	display: none;
+  div {
+    margin: 7vh 0 7vh 0;
+    display: block;
+  }
 
-    }
-    header nav ul {
-	display: none;
-
-    }
-    
-    
-aside {
-	display: none;
-    }
-       
-    
-    
-div {margin: 7vh 0 7vh 0;
-	display:block;
-
-    }
-	
-  
-	
-div section.galerie figure {
+  div section.galerie figure {
     margin: 0;
-       padding: 1vh 0 0 0;
-    }
-    
-    div section.galerie h2 {
+    padding: 1vh 0 0 0;
+  }
+
+  div section.galerie h2 {
     margin: 0;
-       padding: 2vh 0 0 1.5vh;
-    }
- div section.galerie   {
-       padding: 0;
-       margin: 0;
-    }   
-div section.texte {
+    padding: 2vh 0 0 1.5vh;
+  }
+  div section.galerie {
+    padding: 0;
+    margin: 0;
+  }
+  div section.texte {
     position: relative;
     width: auto;
-    top:0;
-    padding: 3vw 14vw 3vw 14vw ;
-   
-    }
-	
-	div section.texte p {
-	font-size: 60%;
-	opacity: 70%;
-	
-   
-    }
-div section.image {
-     position:relative;
- margin: 0;
-    }
-    
-    div section.image figure{
-     padding: 0 0 2vw 0;
-    }
-    
-     div section.image .fa-chevron-down {
+    top: 0;
+    padding: 3vw 14vw 3vw 14vw;
+  }
 
+  div section.texte p {
+    font-size: 60%;
+    opacity: 70%;
+  }
+  div section.image {
+    position: relative;
+    margin: 0;
+  }
+
+  div section.image figure {
+    padding: 0 0 2vw 0;
+  }
+
+  div section.image .fa-chevron-down {
     font-size: 300%;
-         margin: 0 17vw 12vw 17vw;
+    margin: 0 17vw 12vw 17vw;
+  }
 
-    }
-       
-    
-    div.grille  {
-        margin: 0 0 0 0 ;
-        padding: 0 5vw 0 5vw;
-    
+  div.grille {
+    margin: 0 0 0 0;
+    padding: 0 5vw 0 5vw;
+  }
+  div.grille section {
+    margin: 0;
+  }
+  div.grille h2 {
+    margin: 0 0 0 10vw;
+  }
+  div.grille h3 {
+    margin: 0 0 0 10vw;
+  }
 
-}
-        div.grille  section {
-               margin: 0  ;
-    
+  div.grille p {
+    padding: 3vw 2vw 3vw 10vw;
+    font-size: 80%;
+    opacity: 70%;
+  }
 
-}
-	div.grille  h2 {
-   margin:  0 0 0 10vw;
-    
+  div.grille section figure {
+    position: relative;
+    margin: 15vh 0 0 13vw;
+    width: 70%;
+    height: inherit;
+  }
 
-}
-		div.grille  h3 {
-   margin:  0 0 0 10vw;
-    
-
-}
-	
-	div.grille   p {
-    padding: 3vw 2vw 3vw 10vw ; 
-	font-size: 80%;
-	opacity: 70%;
-    
-
-}
-	
-
-	
-    div.grille section figure{
-        position:relative;
-        margin: 15vh 0 0 13vw;
-        width: 70%;
-		height: inherit;
-
-}
-    
-    
-div.grille section article {
+  div.grille section article {
     position: relative;
     width: 90%;
-    top:10vh;
-    margin: 0  ;
+    top: 10vh;
+    margin: 0;
+  }
 
-}
-
-	
-    div section.contact  {
+  div section.contact {
     margin-left: 0;
     margin: 10vh 0 0 5vw;
-	color: whitesmoke;
+    color: whitesmoke;
     border: 2px;
     border-radius: 0 0 5px 5px;
-	padding: 0 14vw 3vw 14vw ;
+    padding: 0 14vw 3vw 14vw;
+  }
+  div section.contact h4 {
+    opacity: 70%;
+  }
 
-
-} 
-    div section.contact  h4 {
-	opacity: 70%;
-
-}
-    
-nav {  
+  nav {
     display: flex;
+  }
 
-    
-}    
-    
-nav ul {
-
-    padding: 2vw ;
-
-
-    
-}  
-nav ul li {
+  nav ul {
+    padding: 2vw;
+  }
+  nav ul li {
     font-size: 18px;
-    
-}
-footer nav {
+  }
+  footer nav {
     left: 0;
     right: 0;
-	bottom: 0;
+    bottom: 0;
     justify-content: space-around;
-	background-color:#0F0F0F;
+    background-color: #0f0f0f;
+  }
+  footer nav ul.mobile {
+    display: inline;
+  }
 
-	}
-footer nav ul.mobile{
-		display: inline;	
-
-	}
-    
-	/* CSS ENTRE CES LIGNES */
-    /* CSS ENTRE CES LIGNES */
+  /* CSS ENTRE CES LIGNES */
+  /* CSS ENTRE CES LIGNES */
 }
-
-
 
 /******************************************************************
 ******************************************************************
@@ -720,42 +626,35 @@ CSS POUR DESIGN REACTIF D'UN ÉCRAN ENTRE 681px (cell) et 1024px (ipad)
 ******************************************************************
 ******************************************************************/
 
+@media screen and (min-width: 681px) and (max-width: 1024px) {
+  /* CSS ENTRE CES LIGNES */
+  /* CSS ENTRE CES LIGNES */
 
-@media screen and (min-width:681px) and (max-width: 1024px) { 
-    
-    /* CSS ENTRE CES LIGNES */
-    /* CSS ENTRE CES LIGNES */
+  body {
+  }
 
-    body  {
+  header {
+    height: 7vw;
+  }
 
-    }
-    
-header{
-        height: 7vw;
+  header video {
+    display: none;
+  }
 
-    }
-
-header video {
-	display: none;
-
-    }
-
- header img.mobile{
-	display: flex;
+  header img.mobile {
+    display: flex;
     justify-content: space-around;
-     align-content: center;
+    align-content: center;
     margin: 20vh auto 0 auto;
     height: 50vh;
     width: auto;
     display: block;
-    }
-       
+  }
 
- nav{
-     font-size: 150%;
-    }   
-    
-	/* CSS ENTRE CES LIGNES */
-    /* CSS ENTRE CES LIGNES */
+  nav {
+    font-size: 150%;
+  }
+
+  /* CSS ENTRE CES LIGNES */
+  /* CSS ENTRE CES LIGNES */
 }
-

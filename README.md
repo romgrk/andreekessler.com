@@ -11,5 +11,5 @@ npm install
 To generate the HTML file, run:
 
 ```
-node ./src/content/generate.js
+npm run generate
 ```

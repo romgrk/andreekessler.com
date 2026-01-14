@@ -16,44 +16,9 @@ html {
   --neutral-950: #0a0a0a;
 }
 
-/* Enlever les padding et margin ajoutés automatiquement par normalize.css */
-
-body,
-html,
-aside,
-section,
-article,
-footer,
-header,
-div,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ol,
-ul,
-li,
-figure {
-  padding: 0;
-  margin: 0;
-}
-
 /******************************************************************
 * Global styles
 ******************************************************************/
-
-/* les images ne seront jamais plus grandes que le contenant <figure> qui les contient */
-img {
-  max-width: 100%;
-  height: auto;
-}
-video {
-  max-width: 100%;
-  height: auto;
-}
 
 /* retire le gras par défaut des titres */
 h1,
@@ -84,14 +49,7 @@ h6 {
 }
 
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+  @apply sr-only;
 }
 
 .hidden {
@@ -206,17 +164,29 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: 3rem;
+  padding-top: 8rem;
 }
 
 .project {
+  position: relative;
   display: flex;
   flex-direction: row;
-  margin-bottom: 4rem;
+  margin-bottom: 8rem;
 }
 
 .project__text {
-  width: var(--page-padding);
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 20rem;
+  max-width: var(--page-padding);
+  height: 100%;
+  padding: 2rem 2rem 1rem 4rem;
+  background-color: color-mix(in srgb, var(--neutral-900) 60%, transparent 40%);
+  backdrop-filter: blur(5px);
+
+  display: flex;
+  align-items: end;
 }
 .project__text h3 {
   @apply text-2xl;
@@ -236,7 +206,7 @@ body {
 }
 
 .project__images {
-  width: calc(100vw - var(--page-padding) - 1rem);
+  width: 100vw;
   overflow-x: auto;
   scrollbar-width: thin;
 }
@@ -253,9 +223,9 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  gap: 2rem;
+  gap: 8rem;
   width: max-content;
-  padding-right: var(--page-padding);
+  padding: 0 var(--page-padding);
 }
 .project__images figure {
   height: auto;
@@ -282,11 +252,8 @@ body {
   right: 0;
   height: 100%;
   width: var(--page-padding);
-  background: linear-gradient(
-    to left,
-    var(--neutral-900),
-    color-mix(in srgb, var(--neutral-900) 0%, transparent 100%)
-  );
+  pointer-events: none;
+  background: linear-gradient(90deg, #17171700 50%, #171717 100%);
 }
 
 /******************************************************/
@@ -295,10 +262,11 @@ body {
 
 .contact {
   width: 100%;
-  padding: 3rem var(--page-padding) 6rem;
-  display: flex;
-  flex-direction: column;
+  padding: 6rem var(--page-padding);
+  @apply flex flex-col items-center justify-center;
+  text-align: center;
   border-top: 1px solid;
+  border-bottom: 1px solid;
   @apply border-neutral-600;
 }
 
@@ -308,9 +276,39 @@ body {
 }
 .contact__text {
   @apply text-xl;
-  /* @apply text-neutral-400; */
+  @apply text-neutral-300;
 }
-.contact__text a {
-  @apply text-yellow-400;
-  text-decoration: underline;
+
+.contact__email {
+  border-radius: 20px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 2rem;
+  text-decoration: none;
+  @apply flex flex-col items-center justify-center;
+  @apply bg-yellow-200;
+  transition: background-color 0.3s ease;
+}
+.contact__email:hover {
+  @apply bg-yellow-300;
+}
+.contact__email__title {
+  @apply text-3xl;
+  @apply text-neutral-900;
+}
+.contact__email__subtitle {
+  @apply text-neutral-900;
+  opacity: 0.6;
+}
+
+/****************************************/
+/* Footer
+/****************************************/
+
+.footer {
+  padding: 8rem var(--page-padding);
+  @apply flex flex-col items-center justify-center;
+}
+.footer__logo {
+  width: calc((100vw - 2 * var(--page-padding)) / 4);
+  height: auto;
 }

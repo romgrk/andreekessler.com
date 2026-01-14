@@ -1,64 +1,68 @@
 <!doctype html>
 <html lang="fr">
+  <head>
+    {{{ _headContent.html }}}
+  </head>
 
-<head>
-  {{{ _headContent.html }}}
-</head>
+  <body>
+    <nav class="navbar">
+      <a href="/contact.html">Contact</a>
 
-<body>
-  <nav class="navbar">
-    <a href="/contact.html">Contact</a>
+      <a href="/apropos.html">À propos</a>
+    </nav>
 
-    <a href="/apropos.html">À propos</a>
-  </nav>
+    <header class="header">
+      <img class="header__logo" src="/images/ANDI_WHITE.png" alt="Andrée Kessler" />
+    </header>
 
-  <header class="header">
-    <img class="header__logo" src="/images/ANDI_WHITE.png" alt="Andrée Kessler" />
-  </header>
+    <section class="about">
+      <div class="about__header">
+        <h1 class="about__title">Andrée Kessler</h1>
+        <h2 class="about__subtitle">Designer graphique</h2>
+      </div>
 
-  <section class="about">
-    <div class="about__header">
-      <h1 class="about__title">Andrée Kessler</h1>
-      <h2 class="about__subtitle">Designer graphique</h2>
-    </div>
+      <div class="about__description">
+        <img class="about__image" src="images/apropos_ak.jpg" />
 
-    <div class="about__description">
-      <img class="about__image" src="images/apropos_ak.jpg" />
+        De nature curieuse, mon parcours unique m'a permis de toucher à une multitude de
+        domaines. La gestion évenementiel a été la première étape de mon parcours
+        académique aux études supérieur qui m'a permis de découvrir le graphisme. Depuis
+        toute jeune, le dessin, la danse et le théâtre sont quelques-unes des formes d'art
+        que j'aime utiliser pour m'exprimer. Mes diverses champs d'intérêts me permettent
+        d'approcher le graphisme avec grande acuité artistique. L'utilisation de la
+        grille, les jeux typographiques et les couleurs choisies avec précision sont
+        quelque-uns des secrets que j'emploi pour atteindre un rendu à la hauteur de ce
+        qui est souhaité.
+      </div>
+    </section>
 
-      De nature curieuse, mon parcours unique m'a permis de toucher à une multitude de
-      domaines. La gestion évenementiel a été la première étape de mon parcours
-      académique aux études supérieur qui m'a permis de découvrir le graphisme. Depuis
-      toute jeune, le dessin, la danse et le théâtre sont quelques-unes des formes d'art
-      que j'aime utiliser pour m'exprimer. Mes diverses champs d'intérêts me permettent
-      d'approcher le graphisme avec grande acuité artistique. L'utilisation de la
-      grille, les jeux typographiques et les couleurs choisies avec précision sont
-      quelque-uns des secrets que j'emploi pour atteindre un rendu à la hauteur de ce
-      qui est souhaité.
-    </div>
-  </section>
+    <!-- prettier-ignore -->
+    <section class="projects">
+      {{{ _p_ataraxie.html }}} 
+      {{{ _p_sqdccsn.html }}} 
+      {{{ _p_contes.html }}} 
+      {{{ _p_delano.html }}} 
+      {{{ _p_styles.html }}} 
+      {{{ _p_mangerlocal.html }}} 
+      {{{ _p_sake.html }}} 
+      {{{ _p_cadrage.html }}} 
+      {{{ _p_illustrations.html }}} 
+      {{{ _p_plusonest.html }}}
+    </section>
 
-  <section class="projects">
-    {{{ _p_ataraxie.html }}}
-    {{{ _p_sqdccsn.html }}}
-    {{{ _p_contes.html }}}
-    {{{ _p_delano.html }}}
-    {{{ _p_styles.html }}}
-    {{{ _p_mangerlocal.html }}}
-    {{{ _p_sake.html }}}
-    {{{ _p_cadrage.html }}}
-    {{{ _p_illustrations.html }}}
-    {{{ _p_plusonest.html }}}
-  </section>
+    <section class="contact">
+      <a class="contact__email" href="mailto:andree.kessler@outlook.com">
+        <span class="contact__email__title">Réservez-moi!</span>
+        <span class="contact__email__subtitle">andree.kessler@outlook.com</span>
+      </a>
 
-  <section class="contact">
-    <h2 class="contact__header">Contact</h2>
+      <p class="contact__text">
+        Première rencontre gratuite. Écrivez-moi pour discuter de vos besoins.
+      </p>
+    </section>
 
-    <p class="contact__text">
-      Première rencontre 100% gratuite. <br /><br />
-      Écrivez-moi pour discuter de vos besoins:
-      <a href="mailto:andree.kessler@outlook.com">andree.kessler@outlook.com</a>
-    </p>
-  </section>
-</body>
-
+    <footer class="footer">
+      <img class="footer__logo" src="/images/ANDI_WHITE.png" alt="logo" />
+    </footer>
+  </body>
 </html>

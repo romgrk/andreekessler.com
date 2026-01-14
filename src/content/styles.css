@@ -142,6 +142,8 @@ header nav {
   top: 1vw;
   left: 10vw;
   font-weight: 100;
+  display: flex;
+  gap: 1rem;
 }
 
 header figure {

@@ -5,7 +5,10 @@
   "main": "scripts.js",
   "type": "module",
   "scripts": {
-    "generate": "node src/generate.js",
+    "start": "nodemon --watch src --ext js,html,css --exec \"npm run generate\"",
+    "generate": "npm run generate:html && npm run generate:css",
+    "generate:html": "node src/generate.js",
+    "generate:css": "npx @tailwindcss/cli -i ./src/content/styles.css -o ./styles.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +23,8 @@
   },
   "homepage": "https://github.com/romgrk/andreekessler.com#readme",
   "dependencies": {
-    "nodemon": "^3.1.11"
+    "@tailwindcss/cli": "^4.1.18",
+    "nodemon": "^3.1.11",
+    "tailwindcss": "^4.1.18"
   }
 }

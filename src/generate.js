@@ -2,7 +2,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const INPUT_PATH = path.join(import.meta.dirname, 'content');
-const OUTPUT_PATH = path.join(import.meta.dirname, '..');
+const OUTPUT_PATH = path.join(import.meta.dirname, '..', 'build');
+
+// Ensure output directory exists
+if (!fs.existsSync(OUTPUT_PATH)) {
+  fs.mkdirSync(OUTPUT_PATH, { recursive: true });
+}
 
 generate();
 

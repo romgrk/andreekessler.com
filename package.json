@@ -5,10 +5,12 @@
   "main": "scripts.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon --watch src --ext js,html,css --exec \"npm run generate\"",
-    "generate": "npm run generate:html && npm run generate:css",
+    "start": "nodemon --watch src --watch static --ext js,html,css --exec \"npm run generate\"",
+    "generate": "npm run copy:static && npm run generate:html && npm run generate:css",
+    "copy:static": "node src/copy-static.js",
     "generate:html": "node src/generate.js",
-    "generate:css": "npx @tailwindcss/cli -i ./src/content/styles.css -o ./styles.css --watch",
+    "generate:css": "npx @tailwindcss/cli -i ./src/content/styles.css -o ./build/styles.css",
+    "build": "npm run generate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

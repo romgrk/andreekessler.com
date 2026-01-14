@@ -137,18 +137,6 @@ header figure {
   width: 8%;
 }
 
-.home-page header .logo {
-  display: none;
-}
-
-.project-page header .nav-link.hidden {
-  font-weight: 500;
-  display: initial;
-}
-.project-page header .nav-link:not(.hidden) {
-  display: none;
-}
-
 /****************************************/
 /* Navigation links
 /****************************************/
@@ -162,15 +150,6 @@ header figure {
 
 .nav-link:hover {
   color: #ffd800;
-}
-
-/**************************************
-/* NAV
-/*************************************/
-
-nav {
-  display: flex;
-  position: block;
 }
 
 /****************************************/
@@ -189,20 +168,7 @@ nav {
 }
 
 /****************************************/
-/* PAGE: HOME
-/****************************************/
-
-img.accueil {
-  width: 35vw;
-  padding-top: -100px;
-  margin: 0 10vw 0 25vw;
-  background-color: orange;
-  display: block;
-  justify-content: space-around;
-}
-
-/****************************************/
-/* PAGE: PROJECTS
+/* Projects gallery
 /****************************************/
 
 .gallery {
@@ -286,10 +252,7 @@ img.accueil {
 
 /*******************SECTION INDIVIUEL ******************/
 
-section {
-}
-
-section.texte {
+/*section.texte {
   position: fixed;
   font-size: 140%;
   width: 20vw;
@@ -324,59 +287,9 @@ section.texte p {
 section.texte article p span {
   font-style: italic;
   opacity: 40%;
-}
-
-section.image {
-  margin: 0 0 0 23vw;
-  height: auto;
-  width: 100%;
-}
-
-section.image figure {
-  padding: 1.5vw 0 0 0;
-}
-
-section.image i {
-  font-size: 4vw;
-  padding: 0 0 1vw 28vw;
-  bottom: 0;
-  position: fixed;
-  color: whitesmoke;
-  z-index: 100000;
-}
+}*/
 
 /***********************SECTION À PROPOS*******************/
-
-div.grille {
-  margin: 0 0 0 20vw;
-}
-
-div.grille section {
-}
-div.grille section article {
-  position: fixed;
-  width: 25%;
-  top: 30vh;
-  margin: 0 0 0 1vw;
-}
-div.grille section article h2 {
-  padding: 0 0 0.5vw 0;
-}
-
-div.grille section article h3 {
-  color: gold;
-  padding: 0 0 0.5vw 0;
-}
-div.grille section article p {
-  text-align: left;
-}
-
-div.grille section figure {
-  width: 30%;
-  position: fixed;
-  margin: 20vh 12vw 0 30vw;
-  opacity: 90%;
-}
 
 /******************************************************/
 /*  FORMULAIRE /  CONTACT
@@ -405,243 +318,4 @@ section.contact h4 {
   div section.contact {
     padding: 0;
   }
-}
-
-/****************************************/
-/* SCÉNARI0 JQUERY
-/* SCÉNARI0 JQUERY
-/* SCÉNARI0 JQUERY
-/****************************************/
-
-/* réglage de l'apparence initiale des objets avant le script jQuery */
-
-body {
-  opacity: 0;
-}
-
-nav {
-  opacity: 0;
-}
-
-h2 {
-  opacity: 0;
-}
-h3 {
-  opacity: 0;
-}
-
-/**************************************************************
-CSS POUR DESIGN REACTIF D'UN ÉCRAN D'UN MAXIMUM DE 680px (cell)
-CSS POUR DESIGN REACTIF D'UN ÉCRAN D'UN MAXIMUM DE 680px (cell)
-CSS POUR DESIGN REACTIF D'UN ÉCRAN D'UN MAXIMUM DE 680px (cell)
-CSS POUR DESIGN REACTIF D'UN ÉCRAN D'UN MAXIMUM DE 680px (cell)
-CSS POUR DESIGN REACTIF D'UN ÉCRAN D'UN MAXIMUM DE 680px (cell)
-CSS POUR DESIGN REACTIF D'UN ÉCRAN D'UN MAXIMUM DE 680px (cell)
-*************************************************************/
-
-@media screen and (max-width: 680px) {
-  /* ne pas modifier */
-  body {
-    font-size: 16px;
-  }
-  h1 {
-    font-size: 48px;
-  }
-  h2 {
-    font-size: 36px;
-  }
-  h3 {
-    font-size: 24px;
-  }
-  h4 {
-    font-size: 20px;
-  }
-  h5 {
-    font-size: 18px;
-  }
-  h6 {
-    font-size: 16px;
-  }
-  /* ne pas modifier */
-
-  /* CSS ENTRE CES LIGNES */
-  /* CSS ENTRE CES LIGNES */
-
-  /****************************************/
-  /* DIV wrapper
-  /****************************************/
-  header video {
-    display: none;
-  }
-
-  header img.mobile {
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-    margin: 20vh auto 0 auto;
-    height: 50vh;
-    width: auto;
-    display: block;
-  }
-
-  header {
-    width: 100vw;
-    right: 0;
-    height: 13vw;
-    position: fixed;
-  }
-
-  header figure {
-    background-color: #0f0f0f;
-    width: 12vw;
-    position: fixed;
-    right: 1vw;
-    top: 1vw;
-    padding: 0.5vw;
-    box-sizing: border-box;
-    height: auto;
-  }
-  header nav {
-    display: none;
-  }
-  header nav ul {
-    display: none;
-  }
-
-  aside {
-    display: none;
-  }
-
-  div {
-    margin: 7vh 0 7vh 0;
-    display: block;
-  }
-
-  div section.texte {
-    position: relative;
-    width: auto;
-    top: 0;
-    padding: 3vw 14vw 3vw 14vw;
-  }
-
-  div section.texte p {
-    font-size: 60%;
-    opacity: 70%;
-  }
-  div section.image {
-    position: relative;
-    margin: 0;
-  }
-
-  div section.image figure {
-    padding: 0 0 2vw 0;
-  }
-
-  div section.image .fa-chevron-down {
-    font-size: 300%;
-    margin: 0 17vw 12vw 17vw;
-  }
-
-  div.grille {
-    margin: 0 0 0 0;
-    padding: 0 5vw 0 5vw;
-  }
-  div.grille section {
-    margin: 0;
-  }
-  div.grille h2 {
-    margin: 0 0 0 10vw;
-  }
-  div.grille h3 {
-    margin: 0 0 0 10vw;
-  }
-
-  div.grille p {
-    padding: 3vw 2vw 3vw 10vw;
-    font-size: 80%;
-    opacity: 70%;
-  }
-
-  div.grille section figure {
-    position: relative;
-    margin: 15vh 0 0 13vw;
-    width: 70%;
-    height: inherit;
-  }
-
-  div.grille section article {
-    position: relative;
-    width: 90%;
-    top: 10vh;
-    margin: 0;
-  }
-
-  nav {
-    display: flex;
-  }
-
-  nav ul {
-    padding: 2vw;
-  }
-  nav ul li {
-    font-size: 18px;
-  }
-  footer nav {
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: space-around;
-    background-color: #0f0f0f;
-  }
-  footer nav ul.mobile {
-    display: inline;
-  }
-
-  /* CSS ENTRE CES LIGNES */
-  /* CSS ENTRE CES LIGNES */
-}
-
-/******************************************************************
-******************************************************************
-CSS POUR DESIGN REACTIF D'UN ÉCRAN ENTRE 681px (cell) et 1024px (ipad)
-CSS POUR DESIGN REACTIF D'UN ÉCRAN ENTRE 681px (cell) et 1024px (ipad)
-CSS POUR DESIGN REACTIF D'UN ÉCRAN ENTRE 681px (cell) et 1024px (ipad)
-CSS POUR DESIGN REACTIF D'UN ÉCRAN ENTRE 681px (cell) et 1024px (ipad)
-CSS POUR DESIGN REACTIF D'UN ÉCRAN ENTRE 681px (cell) et 1024px (ipad)
-CSS POUR DESIGN REACTIF D'UN ÉCRAN ENTRE 681px (cell) et 1024px (ipad)
-CSS POUR DESIGN REACTIF D'UN ÉCRAN ENTRE 681px (cell) et 1024px (ipad)
-******************************************************************
-******************************************************************/
-
-@media screen and (min-width: 681px) and (max-width: 1024px) {
-  /* CSS ENTRE CES LIGNES */
-  /* CSS ENTRE CES LIGNES */
-
-  body {
-  }
-
-  header {
-    height: 7vw;
-  }
-
-  header video {
-    display: none;
-  }
-
-  header img.mobile {
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-    margin: 20vh auto 0 auto;
-    height: 50vh;
-    width: auto;
-    display: block;
-  }
-
-  nav {
-    font-size: 150%;
-  }
-
-  /* CSS ENTRE CES LIGNES */
-  /* CSS ENTRE CES LIGNES */
 }

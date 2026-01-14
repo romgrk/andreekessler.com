@@ -12,11 +12,10 @@ if (!fs.existsSync(OUTPUT_PATH)) {
 generate();
 
 function generate() {
-  const layoutTemplate = fs.readFileSync(path.join(INPUT_PATH, '_layout.html'), 'utf-8');
-  processDirectory(INPUT_PATH, OUTPUT_PATH, layoutTemplate);
+  processDirectory(INPUT_PATH, OUTPUT_PATH);
 }
 
-function processDirectory(inputDir, outputDir, layoutTemplate) {
+function processDirectory(inputDir, outputDir) {
   const entries = fs.readdirSync(inputDir, { withFileTypes: true });
   const isRootContentDir = inputDir === INPUT_PATH;
 
@@ -26,7 +25,11 @@ function processDirectory(inputDir, outputDir, layoutTemplate) {
     if (isRootContentDir && entry.name.startsWith('_')) {
       return;
     }
-    if (!isRootContentDir && entry.name.startsWith('_') && !entry.name.startsWith('_p_')) {
+    if (
+      !isRootContentDir &&
+      entry.name.startsWith('_') &&
+      !entry.name.startsWith('_p_')
+    ) {
       return;
     }
 
@@ -38,15 +41,10 @@ function processDirectory(inputDir, outputDir, layoutTemplate) {
       if (!fs.existsSync(outputPath)) {
         fs.mkdirSync(outputPath, { recursive: true });
       }
-      processDirectory(inputPath, outputPath, layoutTemplate);
+      processDirectory(inputPath, outputPath);
     } else if (entry.name.endsWith('.html')) {
       // Process HTML file
       let content = fs.readFileSync(inputPath, 'utf-8');
-
-      // If content doesn't start with <!doctype html>, wrap it in layout
-      if (!content.trim().startsWith('<!doctype html>')) {
-        content = layoutTemplate.replace('{{{ CONTENT }}}', content);
-      }
 
       // Process all template includes
       const transformedContent = content.replace(/{{{([^}]+)}}}/g, (_, templatePath) => {

@@ -6,16 +6,19 @@
 
   <body>
     <nav class="navbar">
-      <a href="/contact.html">Contact</a>
-
-      <a href="/apropos.html">À propos</a>
+      <a href="#accueil">Accueil</a>
+      <a href="#a-propos">À propos</a>
+      <a href="#projets">Projets</a>
+      <a href="#contact">Contact</a>
     </nav>
+
+    <div class="navbar__filler" id="accueil"></div>
 
     <header class="header">
       <img class="header__logo" src="/images/ANDI_WHITE.png" alt="Andrée Kessler" />
     </header>
 
-    <section class="about">
+    <section class="about" id="a-propos">
       <div class="about__header">
         <h1 class="about__title">Andrée Kessler</h1>
         <h2 class="about__subtitle">Designer graphique</h2>
@@ -37,7 +40,7 @@
     </section>
 
     <!-- prettier-ignore -->
-    <section class="projects">
+    <section class="projects" id="projets">
       {{{ _p_ataraxie.html }}} 
       {{{ _p_sqdccsn.html }}} 
       {{{ _p_contes.html }}} 
@@ -50,7 +53,7 @@
       {{{ _p_plusonest.html }}}
     </section>
 
-    <section class="contact">
+    <section class="contact" id="contact">
       <a class="contact__email" href="mailto:andree.kessler@outlook.com">
         <span class="contact__email__title">Réservez-moi!</span>
         <span class="contact__email__subtitle">andree.kessler@outlook.com</span>

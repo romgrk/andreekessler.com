@@ -41,26 +41,6 @@ video {
   height: auto;
 }
 
-/* ajoutez cette classe si il n'y a qu'une seule image */
-/* dans le <figure> et qu'un espace fin apparait sous l'image */
-/* par exemple <img class="no-border-down" src="..." */
-img.no-border-down {
-  display: block;
-}
-
-/* dans le cas où le float est requis */
-div.pousse {
-  clear: both;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-/* polices par défaut */
-body {
-  font-family: Helvetica, Arial, sans-serif;
-}
-
 /* retire le gras par défaut des titres */
 h1,
 h2,
@@ -108,20 +88,25 @@ h6 {
 /* BODY
 /****************************************/
 
-body {
-  overflow-x: hidden;
-  font-size: 1.25vw;
-  color: whitesmoke;
-  background-color: #0a0a0a;
-  font-family: 'Barlow Condensed', sans-serif;
+html {
+  font-size: 20px;
 }
 
-body p {
-  font-weight: 400;
-  line-height: 145%;
-  font-size: 1vw;
-  font-family: 'Barlow ', sans-serif;
+body {
+  font-size: 1rem;
+  font-family: 'Barlow Condensed', Helvetica, sans-serif;
+  overflow-x: hidden;
+
+  @apply bg-white;
+  @apply text-red-500;
+}
+
+p {
   color: whitesmoke;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: 'Barlow ', sans-serif;
+  line-height: 145%;
 }
 
 /****************************************/
@@ -144,18 +129,12 @@ header nav {
   font-weight: 100;
   display: flex;
   gap: 1rem;
+
+  @apply bg-neutral-950;
 }
 
 header figure {
   width: 8%;
-}
-
-header video {
-  padding: 0.5vh 0 0.5vh 0;
-  box-sizing: border-box;
-  margin: 15vh auto 15vh auto;
-  height: 70vh;
-  display: block;
 }
 
 .home-page header .logo {
@@ -192,31 +171,6 @@ header video {
 nav {
   display: flex;
   position: block;
-}
-
-div aside nav {
-  position: fixed;
-  right: 1.5vw;
-  bottom: 20vh;
-  box-sizing: border-box;
-  font-weight: 100;
-}
-div aside nav span {
-  font-weight: 400;
-}
-
-footer nav {
-  position: fixed;
-  bottom: 1.2vw;
-  left: 3vw;
-  padding: 0.5rem;
-  font-weight: 400;
-}
-
-/***********************ASIDE*******************/
-
-aside {
-  flex-basis: 1%;
 }
 
 /****************************************/

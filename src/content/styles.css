@@ -128,13 +128,19 @@ body {
 
 .navbar__indicator {
   position: absolute;
-  bottom: 4px;
+  bottom: 0.6rem;
   left: 0;
-  width: 6px;
+  width: 4px;
   height: 4px;
   transform: translateX(-50%);
   border-radius: 2px;
   @apply bg-neutral-400;
+}
+
+@media screen and (max-width: 1100px) {
+  .navbar__indicator {
+    bottom: 0.25rem;
+  }
 }
 
 .navbar__filler {
@@ -199,7 +205,7 @@ body {
 }
 .about__signature {
   filter: invert(1);
-  width: calc((100vw - 2 * var(--page-padding)) / 1.5);
+  width: calc((100vw - 2 * var(--page-padding)) / 1.8);
   align-self: end;
   padding-right: 0rem;
   opacity: 0.4;

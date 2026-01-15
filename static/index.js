@@ -1,4 +1,7 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', setupImageHeights);
+window.addEventListener('resize', setupImageHeights);
+
+function setupImageHeights() {
   const projects = Array.from(document.querySelectorAll('.project'));
   projects.forEach((project) => {
     const images = Array.from(
@@ -13,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
-});
+}
 
 async function inferHeightFromFirstImage(images) {
   let tries = 0;
@@ -35,7 +38,7 @@ async function inferHeightFromFirstImage(images) {
     height = 500;
     debugger;
   }
-  images.forEach((img) => {
+  images.slice(1).forEach((img) => {
     img.style.height = `${height}px`;
   });
 }

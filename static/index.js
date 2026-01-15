@@ -23,16 +23,16 @@ function setupImageDimensions() {
 }
 
 async function setupProjectImages(project, images) {
-  /* Setup heights */
   let tries = 0;
+
+  /* Setup heights */
   let height = 0;
   while (true) {
     height = images[0].clientHeight;
     if (height > 0) {
       break;
     }
-
-    if (tries++ >= 10) {
+    if (tries++ >= 40) {
       break;
     }
     await new Promise((resolve) => setTimeout(resolve, 50));
@@ -41,15 +41,30 @@ async function setupProjectImages(project, images) {
   if (height === 0) {
     console.warn('Could not set image heights correctly.');
     height = 500;
-    debugger;
   }
   images.slice(1).forEach((img) => {
     img.style.height = `${height}px`;
   });
 
   /* Setup end padding */
+  tries = 0;
+  let lastImageWidth = 0;
+  while (true) {
+    lastImageWidth = images[images.length - 1].clientWidth;
+    if (height > 0) {
+      break;
+    }
+    if (tries++ >= 40) {
+      break;
+    }
+    await new Promise((resolve) => setTimeout(resolve, 50));
+  }
+  if (lastImageWidth === 0) {
+    console.warn('Could not set image end padding correctly.');
+    return;
+  }
+
   const projectWidth = project.clientWidth;
-  const lastImageWidth = images[images.length - 1].clientWidth;
   const imagesContainer = project.querySelector('.project__images > div');
   imagesContainer.style.paddingRight = `calc(var(--page-padding) - (${lastImageWidth}px - (${projectWidth}px - 2 * var(--page-padding))))`;
 }

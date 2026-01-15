@@ -2,10 +2,10 @@
 /* Project images height setup */
 /*******************************/
 
-document.addEventListener('DOMContentLoaded', setupImageHeights);
-window.addEventListener('resize', setupImageHeights);
+document.addEventListener('DOMContentLoaded', setupImageDimensions);
+window.addEventListener('resize', setupImageDimensions);
 
-function setupImageHeights() {
+function setupImageDimensions() {
   const projects = Array.from(document.querySelectorAll('.project'));
   projects.forEach((project) => {
     const images = Array.from(
@@ -13,16 +13,17 @@ function setupImageHeights() {
     );
 
     if (images[0].complete) {
-      inferHeightFromFirstImage(images);
+      setupProjectImages(project, images);
     } else {
       images[0].addEventListener('load', () => {
-        inferHeightFromFirstImage(images);
+        setupProjectImages(project, images);
       });
     }
   });
 }
 
-async function inferHeightFromFirstImage(images) {
+async function setupProjectImages(project, images) {
+  /* Setup heights */
   let tries = 0;
   let height = 0;
   while (true) {
@@ -45,6 +46,12 @@ async function inferHeightFromFirstImage(images) {
   images.slice(1).forEach((img) => {
     img.style.height = `${height}px`;
   });
+
+  /* Setup end padding */
+  const projectWidth = project.clientWidth;
+  const lastImageWidth = images[images.length - 1].clientWidth;
+  const imagesContainer = project.querySelector('.project__images > div');
+  imagesContainer.style.paddingRight = `calc(var(--page-padding) - (${lastImageWidth}px - (${projectWidth}px - 2 * var(--page-padding))))`;
 }
 
 /********************/

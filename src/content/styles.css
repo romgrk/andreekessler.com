@@ -20,40 +20,8 @@ html {
 * Global styles
 ******************************************************************/
 
-/* retire le gras par défaut des titres */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 400;
-}
-
-.sm-only {
-  display: none;
-}
-@media screen and (max-width: 680px) {
-  .sm-only {
-    display: block;
-  }
-}
-
-.sm-hidden {
-  display: block;
-}
-@media screen and (max-width: 680px) {
-  .sm-hidden {
-    display: none;
-  }
-}
-
-.sr-only {
-  @apply sr-only;
-}
-
-.hidden {
-  display: none;
+::selection {
+  @apply bg-slate-600;
 }
 
 /****************************************/
@@ -125,7 +93,7 @@ body {
 }
 
 .navbar__filler {
-  height: 3rem;
+  height: 1rem;
 }
 
 /****************************************/
@@ -375,6 +343,9 @@ body {
 }
 .contact__email:hover {
   @apply bg-yellow-300;
+}
+.contact__email:active {
+  transform: translateY(1px);
 }
 .contact__email__title {
   @apply text-3xl;

@@ -50,6 +50,11 @@ body {
 
   --page-padding: 30vw;
 }
+@media screen and (max-width: 1500px) {
+  body {
+    --page-padding: 25vw;
+  }
+}
 @media screen and (max-width: 1200px) {
   body {
     --page-padding: 20vw;
@@ -203,15 +208,20 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  min-width: 20rem;
+  /* min-width: 20rem; */
   max-width: var(--page-padding);
   height: 100%;
-  padding: 2rem 2rem 1rem 4rem;
+  padding: 2rem 2rem 1rem 2rem;
   background-color: color-mix(in srgb, var(--neutral-900) 60%, transparent 40%);
   backdrop-filter: blur(5px);
 
   display: flex;
   align-items: end;
+}
+@media screen and (min-width: 1500px) {
+  .project__text {
+    padding-left: 4rem;
+  }
 }
 .project__text h3 {
   @apply text-2xl;
@@ -279,6 +289,11 @@ body {
   width: var(--page-padding);
   pointer-events: none;
   background: linear-gradient(90deg, #17171700 50%, #171717 100%);
+}
+@media screen and (max-width: 1300px) {
+  .project:after {
+    right: -2rem;
+  }
 }
 
 /* Mobile layout */

@@ -14,7 +14,18 @@ html {
   --neutral-950: #0a0a0a;
 }
 
-/* Mobile layout: 1400px */
+/* Mobile layout starts at this value */
+$mobile-breakpoint: 1400px;
+@mixin mobile-layout {
+  @media screen and (max-width: $mobile-breakpoint) {
+    @content;
+  }
+}
+@mixin desktop-layout {
+  @media screen and (min-width: ($mobile-breakpoint + 1)) {
+    @content;
+  }
+}
 
 /******************************************************************
 * Global styles
@@ -83,11 +94,13 @@ body {
   height: max-content;
 
   @apply text-neutral-400;
-
-  /* FIXME: Maybe blur on blur (with projects) is too much */
-  /* @apply bg-neutral-900; */
-  background-color: color-mix(in srgb, var(--neutral-900) 60%, transparent 40%);
-  backdrop-filter: blur(5px);
+  @apply bg-neutral-900;
+}
+@include mobile-layout {
+  .navbar {
+    background-color: color-mix(in srgb, var(--neutral-900) 60%, transparent 40%);
+    backdrop-filter: blur(5px);
+  }
 }
 
 .navbar a {
@@ -218,7 +231,7 @@ body {
   display: flex;
   align-items: end;
 }
-@media screen and (min-width: 1500px) {
+@include desktop-layout {
   .project__text {
     padding-left: 4rem;
   }
@@ -286,11 +299,16 @@ body {
   top: 0;
   right: 0;
   height: 100%;
-  width: var(--page-padding);
+  width: calc(var(--page-padding) / 1.6);
   pointer-events: none;
-  background: linear-gradient(90deg, #17171700 50%, #171717 100%);
+  background: linear-gradient(
+    to right,
+    oklab(0.41 0 0 / 0) 0%,
+    oklab(0.18 0 0 / 0.1) 20%,
+    oklab(0.18 0 0 / 0.8) 100%
+  );
 }
-@media screen and (max-width: 1400px) {
+@include mobile-layout {
   .project:after {
     right: -2rem;
   }
@@ -298,7 +316,7 @@ body {
 
 /* Mobile layout */
 
-@media screen and (max-width: 1400px) {
+@include mobile-layout {
   .project {
     flex-direction: column-reverse;
     margin-bottom: 4rem;

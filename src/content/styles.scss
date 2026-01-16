@@ -301,10 +301,28 @@ body {
   @apply text-neutral-600;
   font-style: normal;
 }
-.project__text article *:not(:last-child) {
+.project__text article > *:not(:last-child) {
   margin-bottom: 0.5rem;
 }
+.project__image-descriptions {
+  width: 100%;
+  position: relative;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+@include desktop-layout {
+  .project__image-descriptions {
+    transition: height 0.4s ease-in-out;
+    overflow: hidden;
+  }
+}
 .project__text [data-image-for] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0;
   transition:
     height 0.4s ease-in-out,
     opacity 0.4s ease-in-out;

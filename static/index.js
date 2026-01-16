@@ -1,3 +1,16 @@
+document.addEventListener('DOMContentLoaded', () => {
+  hideLoader();
+  setupNavbarScrollLink();
+
+  const setupLayout = async () => {
+    await setupImageDimensions();
+    await setupImageTextReveal();
+  };
+
+  setupLayout();
+  window.addEventListener('resize', setupLayout);
+});
+
 /*******************************/
 /* Page loader */
 /*******************************/
@@ -30,30 +43,20 @@ async function hideLoader() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', hideLoader);
-
 /*******************************/
 /* Project images height setup */
 /*******************************/
 
-document.addEventListener('DOMContentLoaded', setupImageDimensions);
-window.addEventListener('resize', setupImageDimensions);
-
 function setupImageDimensions() {
   const projects = Array.from(document.querySelectorAll('.project'));
-  projects.forEach((project) => {
-    const images = Array.from(
-      project.querySelector('.project__images').querySelectorAll('img, video'),
-    );
-
-    if (images[0].complete) {
-      setupProjectImages(project, images);
-    } else {
-      images[0].addEventListener('load', () => {
-        setupProjectImages(project, images);
-      });
-    }
-  });
+  return Promise.all(
+    projects.map((project) => {
+      const images = Array.from(
+        project.querySelector('.project__images').querySelectorAll('img, video'),
+      );
+      return setupProjectImages(project, images);
+    }),
+  );
 }
 
 async function setupProjectImages(project, images) {
@@ -97,8 +100,6 @@ function waitUntilLoaded(image) {
 /* Image-triggered text reveal */
 /*********************************/
 
-document.addEventListener('DOMContentLoaded', setupImageTextReveal);
-
 async function setupImageTextReveal() {
   const MOBILE_BREAKPOINT = 1300;
   const projects = document.querySelectorAll('.project');
@@ -133,54 +134,25 @@ async function setupImageTextReveal() {
     let isAnimating = false;
     let lastIsMobile = isMobile();
 
-    // Create a wrapper for mobile layout to maintain consistent height
-    const wrapper = document.createElement('div');
-    wrapper.className = 'image-text-wrapper';
-    const parent = elements[0].parentNode;
-    elements.forEach((el) => wrapper.appendChild(el));
-    parent.appendChild(wrapper);
+    const wrapper = elements[0].parentNode;
 
     function setupLayout() {
       const mobile = isMobile();
 
+      // Measure all element heights
+      elements.forEach((element) => {
+        element.style.position = '';
+        element.style.height = 'auto';
+        element.style.opacity = '';
+      });
+      const heights = elements.map((el) => el.scrollHeight);
+
       if (mobile) {
-        // Mobile: position elements absolutely, set wrapper to tallest element height
-        let maxHeight = 0;
-        elements.forEach((element) => {
-          // Reset styles to measure natural height
-          element.style.height = 'auto';
-          element.style.opacity = '';
-          element.style.position = '';
-          const height = element.scrollHeight;
-          if (height > maxHeight) maxHeight = height;
-        });
-
-        wrapper.style.position = 'relative';
-        wrapper.style.height = `${maxHeight}px`;
-
-        elements.forEach((element) => {
-          element.style.position = 'absolute';
-          element.style.top = '0';
-          element.style.left = '0';
-          element.style.width = '100%';
-          element.style.height = 'auto';
-          element.style.opacity = '0';
-          element.style.overflow = '';
-        });
+        // Mobile: wrapper height = tallest element
+        wrapper.style.height = `${Math.max(...heights)}px`;
       } else {
-        // Desktop: height animation
-        wrapper.style.position = '';
-        wrapper.style.height = '';
-
-        elements.forEach((element) => {
-          element.style.position = '';
-          element.style.top = '';
-          element.style.left = '';
-          element.style.width = '';
-          element.style.height = '0';
-          element.style.opacity = '';
-          element.style.overflow = 'hidden';
-        });
+        // Desktop: wrapper height = first element (will animate)
+        wrapper.style.height = `${heights[0]}px`;
       }
 
       // Reset state when layout changes
@@ -191,65 +163,38 @@ async function setupImageTextReveal() {
       }
     }
 
-    function showElement(element) {
-      if (isMobile()) {
-        // Mobile: fade in
-        // Trigger reflow to ensure transition happens
-        element.offsetHeight;
-        element.style.opacity = '1';
-
-        let done = false;
-        const finish = () => {
-          if (done) return;
-          done = true;
-          isAnimating = false;
-        };
-        element.addEventListener('transitionend', finish, { once: true });
-        // Fallback timeout in case transitionend doesn't fire
-        setTimeout(finish, 450);
-      } else {
-        // Desktop: height animation
-        element.style.height = 'auto';
-        const naturalHeight = element.scrollHeight;
-        element.style.height = '0';
-        element.offsetHeight;
-        element.style.height = `${naturalHeight}px`;
-
-        element.addEventListener(
-          'transitionend',
-          () => {
-            if (element.style.height !== '0px') {
-              element.style.height = 'auto';
-            }
-            isAnimating = false;
-          },
-          { once: true },
-        );
+    function transitionTo(fromElement, toElement) {
+      // Fade out current element
+      if (fromElement) {
+        fromElement.style.opacity = '0';
       }
-    }
 
-    function hideElement(element, callback) {
-      if (isMobile()) {
-        // Mobile: fade out
-        element.style.opacity = '0';
+      // Fade in new element and animate wrapper height
+      if (toElement) {
+        toElement.offsetHeight; // Trigger reflow
+        toElement.style.opacity = '1';
 
-        let done = false;
-        const finish = () => {
-          if (done) return;
-          done = true;
-          callback();
-        };
-        element.addEventListener('transitionend', finish, { once: true });
-        // Fallback timeout in case transitionend doesn't fire
-        setTimeout(finish, 450);
-      } else {
-        // Desktop: height animation
-        const currentHeight = element.scrollHeight;
-        element.style.height = `${currentHeight}px`;
-        element.offsetHeight;
-        element.style.height = '0';
-        element.addEventListener('transitionend', callback, { once: true });
+        // Animate wrapper height (desktop only, mobile has fixed height)
+        if (!isMobile()) {
+          const targetHeight = toElement.scrollHeight;
+          wrapper.style.height = `${targetHeight}px`;
+        }
       }
+
+      // Wait for transition to complete
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        isAnimating = false;
+      };
+
+      const transitionElement = toElement || fromElement;
+      if (transitionElement) {
+        transitionElement.addEventListener('transitionend', finish, { once: true });
+      }
+      // Fallback timeout in case transitionend doesn't fire
+      setTimeout(finish, 450);
     }
 
     function checkVisibility() {
@@ -283,19 +228,7 @@ async function setupImageTextReveal() {
       if (newVisible === currentVisible) return;
 
       isAnimating = true;
-
-      if (currentVisible && currentVisible !== newVisible) {
-        hideElement(currentVisible, () => {
-          if (newVisible) {
-            showElement(newVisible);
-          } else {
-            isAnimating = false;
-          }
-        });
-      } else if (newVisible) {
-        showElement(newVisible);
-      }
-
+      transitionTo(currentVisible, newVisible);
       currentVisible = newVisible;
     }
 
@@ -321,15 +254,13 @@ async function setupImageTextReveal() {
 
 const ANCHORS_ID = ['accueil', 'a-propos', 'projets', 'contact'];
 
-document.addEventListener('DOMContentLoaded', setupNavbarScrollLink);
-
 function setupNavbarScrollLink() {
   const links = Array.from(document.querySelectorAll('.navbar a'));
   const anchors = ANCHORS_ID.map((id) => document.getElementById(id));
 
   let targetIndex = null;
 
-  function updateActive(initial = false) {
+  function updateActive() {
     const scrollY = window.scrollY;
     let newIndex = 0;
     for (let i = 0; i < anchors.length; i++) {

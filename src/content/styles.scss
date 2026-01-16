@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-@import 'tailwindcss';
-
 html {
   --neutral-50: #fafafa;
   --neutral-100: #f5f5f5;
@@ -15,6 +13,8 @@ html {
   --neutral-900: #171717;
   --neutral-950: #0a0a0a;
 }
+
+/* Mobile layout: 1400px */
 
 /******************************************************************
 * Global styles
@@ -290,7 +290,7 @@ body {
   pointer-events: none;
   background: linear-gradient(90deg, #17171700 50%, #171717 100%);
 }
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1400px) {
   .project:after {
     right: -2rem;
   }
@@ -298,7 +298,7 @@ body {
 
 /* Mobile layout */
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1400px) {
   .project {
     flex-direction: column-reverse;
     margin-bottom: 4rem;

@@ -110,9 +110,11 @@ async function setupProjectImages(project, images) {
 document.addEventListener('DOMContentLoaded', setupImageTextReveal);
 
 async function setupImageTextReveal() {
+  const MOBILE_BREAKPOINT = 1300;
   const projects = document.querySelectorAll('.project');
 
   const vwToPx = (vw) => (vw / 100) * window.innerWidth;
+  const isMobile = () => window.innerWidth <= MOBILE_BREAKPOINT;
 
   // Wait for all images to load
   const allImages = Array.from(document.images);
@@ -127,7 +129,9 @@ async function setupImageTextReveal() {
   );
 
   projects.forEach((project) => {
-    const elements = project.querySelectorAll('.project__text [data-image-for]');
+    const elements = Array.from(
+      project.querySelectorAll('.project__text [data-image-for]'),
+    );
     if (elements.length === 0) return;
 
     const imagesContainer = project.querySelector('.project__images');
@@ -137,57 +141,143 @@ async function setupImageTextReveal() {
 
     let currentVisible = null;
     let isAnimating = false;
+    let lastIsMobile = isMobile();
 
-    // Set initial height to 0 for all elements
-    elements.forEach((element) => {
-      element.style.height = '0';
-      element.style.overflow = 'hidden';
-    });
+    // Create a wrapper for mobile layout to maintain consistent height
+    const wrapper = document.createElement('div');
+    wrapper.className = 'image-text-wrapper';
+    const parent = elements[0].parentNode;
+    elements.forEach((el) => wrapper.appendChild(el));
+    parent.appendChild(wrapper);
+
+    function setupLayout() {
+      const mobile = isMobile();
+
+      if (mobile) {
+        // Mobile: position elements absolutely, set wrapper to tallest element height
+        let maxHeight = 0;
+        elements.forEach((element) => {
+          // Reset styles to measure natural height
+          element.style.height = 'auto';
+          element.style.opacity = '';
+          element.style.position = '';
+          const height = element.scrollHeight;
+          if (height > maxHeight) maxHeight = height;
+        });
+
+        wrapper.style.position = 'relative';
+        wrapper.style.height = `${maxHeight}px`;
+
+        elements.forEach((element) => {
+          element.style.position = 'absolute';
+          element.style.top = '0';
+          element.style.left = '0';
+          element.style.width = '100%';
+          element.style.height = 'auto';
+          element.style.opacity = '0';
+          element.style.overflow = '';
+        });
+      } else {
+        // Desktop: height animation
+        wrapper.style.position = '';
+        wrapper.style.height = '';
+
+        elements.forEach((element) => {
+          element.style.position = '';
+          element.style.top = '';
+          element.style.left = '';
+          element.style.width = '';
+          element.style.height = '0';
+          element.style.opacity = '';
+          element.style.overflow = 'hidden';
+        });
+      }
+
+      // Reset state when layout changes
+      if (mobile !== lastIsMobile) {
+        currentVisible = null;
+        isAnimating = false;
+        lastIsMobile = mobile;
+      }
+    }
 
     function showElement(element) {
-      // Measure the natural height
-      element.style.height = 'auto';
-      const naturalHeight = element.scrollHeight;
-      element.style.height = '0';
+      if (isMobile()) {
+        // Mobile: fade in
+        // Trigger reflow to ensure transition happens
+        element.offsetHeight;
+        element.style.opacity = '1';
 
-      // Trigger reflow
-      element.offsetHeight;
-
-      // Animate to natural height
-      element.style.height = `${naturalHeight}px`;
-
-      // Clean up after transition
-      element.addEventListener(
-        'transitionend',
-        () => {
-          if (element.style.height !== '0px') {
-            element.style.height = 'auto';
-          }
+        let done = false;
+        const finish = () => {
+          if (done) return;
+          done = true;
           isAnimating = false;
-        },
-        { once: true },
-      );
+        };
+        element.addEventListener('transitionend', finish, { once: true });
+        // Fallback timeout in case transitionend doesn't fire
+        setTimeout(finish, 450);
+      } else {
+        // Desktop: height animation
+        element.style.height = 'auto';
+        const naturalHeight = element.scrollHeight;
+        element.style.height = '0';
+        element.offsetHeight;
+        element.style.height = `${naturalHeight}px`;
+
+        element.addEventListener(
+          'transitionend',
+          () => {
+            if (element.style.height !== '0px') {
+              element.style.height = 'auto';
+            }
+            isAnimating = false;
+          },
+          { once: true },
+        );
+      }
+    }
+
+    function hideElement(element, callback) {
+      if (isMobile()) {
+        // Mobile: fade out
+        element.style.opacity = '0';
+
+        let done = false;
+        const finish = () => {
+          if (done) return;
+          done = true;
+          callback();
+        };
+        element.addEventListener('transitionend', finish, { once: true });
+        // Fallback timeout in case transitionend doesn't fire
+        setTimeout(finish, 450);
+      } else {
+        // Desktop: height animation
+        const currentHeight = element.scrollHeight;
+        element.style.height = `${currentHeight}px`;
+        element.offsetHeight;
+        element.style.height = '0';
+        element.addEventListener('transitionend', callback, { once: true });
+      }
     }
 
     function checkVisibility() {
       if (isAnimating) return;
 
       const containerRect = imagesContainer.getBoundingClientRect();
-
-      // Get the page padding (in vw units) to account for masked areas
       const pagePaddingValue = getComputedStyle(document.body).getPropertyValue(
         '--page-padding',
       );
-      const pagePaddingVw = parseFloat(pagePaddingValue); // e.g. "30vw" -> 30
+      const pagePaddingVw = parseFloat(pagePaddingValue);
       const pagePaddingPx = vwToPx(pagePaddingVw);
 
       const visibleLeft = containerRect.left + pagePaddingPx;
       const visibleRight = containerRect.right - pagePaddingPx;
 
-      // Find which element should be visible (last one whose image is in view)
       let newVisible = null;
       elements.forEach((element) => {
-        const imageIndex = parseInt(element.dataset.imageFor, 10) - 1; // 1-indexed
+        const imageIndex = parseInt(element.dataset.imageFor, 10) - 1;
         const targetImage = images[imageIndex];
         if (!targetImage) return;
 
@@ -200,41 +290,35 @@ async function setupImageTextReveal() {
         }
       });
 
-      // No change needed
       if (newVisible === currentVisible) return;
 
       isAnimating = true;
 
-      // Hide the previously visible element, then show the new one
       if (currentVisible && currentVisible !== newVisible) {
-        // Get current computed height and set it explicitly (transitions don't work from 'auto')
-        const currentHeight = currentVisible.scrollHeight;
-        currentVisible.style.height = `${currentHeight}px`;
-        // Trigger reflow
-        currentVisible.offsetHeight;
-        // Now animate to 0
-        currentVisible.style.height = '0';
-        currentVisible.addEventListener(
-          'transitionend',
-          () => {
-            if (newVisible) {
-              showElement(newVisible);
-            } else {
-              isAnimating = false;
-            }
-          },
-          { once: true },
-        );
+        hideElement(currentVisible, () => {
+          if (newVisible) {
+            showElement(newVisible);
+          } else {
+            isAnimating = false;
+          }
+        });
       } else if (newVisible) {
-        // No previous element, just show the new one
         showElement(newVisible);
       }
 
       currentVisible = newVisible;
     }
 
+    function handleResize() {
+      setupLayout();
+      checkVisibility();
+    }
+
+    // Initial setup
+    setupLayout();
+
     imagesContainer.addEventListener('scroll', checkVisibility);
-    window.addEventListener('resize', checkVisibility);
+    window.addEventListener('resize', handleResize);
 
     // Initial check
     checkVisibility();

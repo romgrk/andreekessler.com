@@ -5,6 +5,8 @@
   </head>
 
   <body>
+    <div class="loader" id="loader"></div>
+
     <nav class="navbar">
       <a href="#accueil">Accueil</a>
       <a href="#a-propos">À propos</a>
@@ -15,7 +17,12 @@
     <div class="navbar__filler" id="accueil"></div>
 
     <header class="header">
-      <img class="header__logo" src="/images/ANDI_WHITE.png" alt="Andrée Kessler" />
+      <img
+        class="header__logo"
+        src="/images/ANDI_WHITE.png"
+        alt="Andrée Kessler"
+        data-wait-until-loaded
+      />
     </header>
 
     <section class="about" id="a-propos">
@@ -25,7 +32,7 @@
       </div>
 
       <div class="about__description">
-        <img class="about__image" src="images/apropos_ak.jpg" />
+        <img class="about__image" src="images/apropos_ak.jpg" data-wait-until-loaded />
 
         De nature curieuse, mon parcours unique m'a permis de toucher à une multitude de
         domaines. La gestion évenementiel a été la première étape de mon parcours

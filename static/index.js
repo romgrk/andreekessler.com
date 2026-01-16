@@ -1,4 +1,38 @@
 /*******************************/
+/* Page loader */
+/*******************************/
+
+async function hideLoader() {
+  const loader = document.getElementById('loader');
+  if (!loader) return;
+
+  // Wait for fonts
+  await document.fonts.ready;
+
+  // Wait for logo images
+  const images = Array.from(document.querySelectorAll('[data-wait-until-loaded]'));
+  await Promise.all(
+    images.map((img) => {
+      if (img.complete) return Promise.resolve();
+      return new Promise((resolve) => {
+        img.addEventListener('load', resolve);
+        img.addEventListener('error', resolve);
+      });
+    }),
+  );
+
+  // Reveal the page
+  loader.classList.add('loader--hidden');
+
+  // Remove from DOM after transition
+  loader.addEventListener('transitionend', () => {
+    loader.remove();
+  });
+}
+
+document.addEventListener('DOMContentLoaded', hideLoader);
+
+/*******************************/
 /* Project images height setup */
 /*******************************/
 

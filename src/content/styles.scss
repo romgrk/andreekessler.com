@@ -2,20 +2,6 @@
 
 @use './_mixins' as *;
 
-html {
-  --neutral-50: #fafafa;
-  --neutral-100: #f5f5f5;
-  --neutral-200: #e5e5e5;
-  --neutral-300: #d4d4d4;
-  --neutral-400: #a3a3a3;
-  --neutral-500: #737373;
-  --neutral-600: #525252;
-  --neutral-700: #404040;
-  --neutral-800: #262626;
-  --neutral-900: #171717;
-  --neutral-950: #0a0a0a;
-}
-
 /******************************************************************
 * Global styles
 ******************************************************************/
@@ -116,7 +102,7 @@ body {
 }
 @include mobile-layout {
   .navbar {
-    background-color: color-mix(in srgb, var(--neutral-900) 60%, transparent 40%);
+    background-color: color-mix(in srgb, var(--color-neutral-900) 60%, transparent 40%);
     backdrop-filter: blur(5px);
   }
 }
@@ -253,7 +239,7 @@ body {
   max-width: var(--page-padding);
   height: 100%;
   padding: 0.5rem 2rem 1rem;
-  background-color: color-mix(in srgb, var(--neutral-900) 60%, transparent 40%);
+  background-color: color-mix(in srgb, var(--color-neutral-900) 60%, transparent 40%);
   backdrop-filter: blur(5px);
 
   display: flex;
@@ -374,9 +360,9 @@ body {
   pointer-events: none;
   background: linear-gradient(
     to right,
-    oklab(0.41 0 0 / 0) 0%,
-    oklab(0.18 0 0 / 0.1) 20%,
-    oklab(0.18 0 0 / 0.8) 100%
+    transparent 0%,
+    color-mix(in srgb, var(--color-neutral-900) 10%, transparent) 20%,
+    color-mix(in srgb, var(--color-neutral-900) 80%, transparent) 100%
   );
 }
 @include mobile-layout {

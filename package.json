@@ -5,6 +5,9 @@
   "main": "scripts.js",
   "type": "module",
   "scripts": {
+    "dev": "npm run generate && (npm run watch & npm run serve)",
+    "watch": "nodemon --watch src --watch static --ext js,html,css,scss --exec \"npm run generate\"",
+    "serve": "browser-sync start --server build --watch --no-open",
     "start": "nodemon --watch src --watch static --ext js,html,css,scss --exec \"npm run generate\"",
     "generate": "npm run copy:static && npm run generate:html && npm run generate:css",
     "copy:static": "node src/copy-static.js",
@@ -29,5 +32,8 @@
     "nodemon": "^3.1.11",
     "sass": "^1.97.2",
     "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.4"
   }
 }

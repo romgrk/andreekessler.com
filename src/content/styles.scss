@@ -28,23 +28,26 @@ html {
   @apply bg-slate-600;
 }
 
+/* Set REM unit */
+html {
+  font-size: 20px;
+}
+
 /****************************************/
 /* BODY
 /****************************************/
 
-html {
-  width: 100%;
-  font-size: 20px;
-}
-
 html,
 body {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+
   margin: 0;
   padding: 0;
 }
 
 body {
-  width: 100%;
   font-size: 1rem;
   font-family: 'Barlow Condensed', Helvetica, sans-serif;
   overflow-x: hidden;
@@ -80,11 +83,11 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 3.75rem;
+  height: max-content;
+  padding: 0.5rem var(--page-padding);
+
   @apply flex flex-row justify-between;
   gap: 1rem;
-  padding: 0.5rem var(--page-padding);
-  height: max-content;
 
   @apply text-neutral-400;
   @apply bg-neutral-900;

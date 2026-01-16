@@ -106,7 +106,7 @@ body {
   width: 100%;
   max-width: 100%;
   height: max-content;
-  padding: 0.5rem var(--page-padding);
+  padding: 0.5rem calc(var(--page-padding) + 0.5rem);
 
   @apply flex flex-row justify-between;
   gap: 1rem;
@@ -298,7 +298,8 @@ body {
 .project__text h4 {
   @apply text-neutral-200;
 }
-.project__text p {
+.project__text p,
+.project__text div {
   @apply text-neutral-400;
 }
 .project__text em {
@@ -307,6 +308,9 @@ body {
 }
 .project__text article *:not(:last-child) {
   margin-bottom: 0.5rem;
+}
+.project__text [data-image-for] {
+  transition: height 1s ease-out;
 }
 
 .project__images {

@@ -310,7 +310,9 @@ body {
   margin-bottom: 0.5rem;
 }
 .project__text [data-image-for] {
-  transition: height 1s ease-out;
+  transition:
+    height 0.4s ease-in-out,
+    opacity 0.4s ease-in-out;
 }
 
 .project__images {

@@ -207,18 +207,14 @@ async function setupImageTextReveal() {
 
       // Hide the previously visible element, then show the new one
       if (currentVisible && currentVisible !== newVisible) {
-        const oldElement = currentVisible;
-
-        // Set explicit height first (can't transition from 'auto')
-        oldElement.style.height = `${oldElement.scrollHeight}px`;
-
+        // Get current computed height and set it explicitly (transitions don't work from 'auto')
+        const currentHeight = currentVisible.scrollHeight;
+        currentVisible.style.height = `${currentHeight}px`;
         // Trigger reflow
-        oldElement.offsetHeight;
-
+        currentVisible.offsetHeight;
         // Now animate to 0
-        oldElement.style.height = '0';
-
-        oldElement.addEventListener(
+        currentVisible.style.height = '0';
+        currentVisible.addEventListener(
           'transitionend',
           () => {
             if (newVisible) {

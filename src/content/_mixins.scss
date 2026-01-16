@@ -1,0 +1,13 @@
+/* Mobile layout starts at this value */
+$mobile-breakpoint: 1400px;
+
+@mixin mobile-layout {
+  @media screen and (max-width: $mobile-breakpoint) {
+    @content;
+  }
+}
+@mixin desktop-layout {
+  @media screen and (min-width: ($mobile-breakpoint + 1)) {
+    @content;
+  }
+}

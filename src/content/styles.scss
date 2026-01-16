@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@use './_mixins' as *;
+
 html {
   --neutral-50: #fafafa;
   --neutral-100: #f5f5f5;
@@ -12,19 +14,6 @@ html {
   --neutral-800: #262626;
   --neutral-900: #171717;
   --neutral-950: #0a0a0a;
-}
-
-/* Mobile layout starts at this value */
-$mobile-breakpoint: 1400px;
-@mixin mobile-layout {
-  @media screen and (max-width: $mobile-breakpoint) {
-    @content;
-  }
-}
-@mixin desktop-layout {
-  @media screen and (min-width: ($mobile-breakpoint + 1)) {
-    @content;
-  }
 }
 
 /******************************************************************

@@ -1,5 +1,5 @@
 /* Mobile layout starts at this value */
-$mobile-breakpoint: 1400px;
+$mobile-breakpoint: 1300px;
 
 @mixin mobile-layout {
   @media screen and (max-width: $mobile-breakpoint) {

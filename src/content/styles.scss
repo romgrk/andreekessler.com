@@ -31,6 +31,10 @@ $mobile-breakpoint: 1400px;
 * Global styles
 ******************************************************************/
 
+:root {
+  color-scheme: dark;
+}
+
 ::selection {
   @apply bg-slate-600;
 }
@@ -229,11 +233,40 @@ body {
   backdrop-filter: blur(5px);
 
   display: flex;
-  align-items: end;
+  flex-direction: column;
+  align-items: start;
 }
 @include desktop-layout {
   .project__text {
     padding-left: 4rem;
+    overflow-y: auto;
+  }
+  @supports not selector(::-webkit-scrollbar-thumb) {
+    .project__text {
+      scrollbar-width: thin;
+    }
+  }
+  @supports selector(::-webkit-scrollbar-thumb) {
+    .project__text::-webkit-scrollbar {
+      width: 12px;
+    }
+    .project__text::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      border: 3px solid transparent;
+      background-clip: content-box;
+    }
+    .project__text::-webkit-scrollbar-track {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    .project__text::-webkit-scrollbar-button {
+      display: none;
+      width: 0px;
+      height: 0px;
+    }
+  }
+  .project__text article {
+    display: contents;
   }
 }
 .project__text h3 {

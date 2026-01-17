@@ -74,8 +74,11 @@ body {
   @apply bg-neutral-900;
   transition: opacity 0.8s ease-out;
 }
-
-.loader--hidden {
+body.loading .loader {
+  opacity: 1;
+  pointer-events: all;
+}
+.loader {
   opacity: 0;
   pointer-events: none;
 }
@@ -97,19 +100,21 @@ body {
   @apply flex flex-row justify-between;
   gap: 1rem;
 
-  @apply text-neutral-400;
+  @apply text-sm;
+  @apply text-neutral-500;
   @apply bg-neutral-900;
 }
 @include mobile-layout {
   .navbar {
+    @apply text-neutral-400;
     background-color: color-mix(in srgb, var(--color-neutral-900) 60%, transparent 40%);
     backdrop-filter: blur(5px);
   }
 }
 @media screen and (max-height: 600px) {
   .navbar {
-    font-size: 0.9rem;
-    padding: 0.25rem var(--page-padding);
+    @apply text-sm;
+    padding: 0.25rem calc(var(--page-padding) + 0.5rem);
   }
 }
 
@@ -135,6 +140,23 @@ body {
   padding: min(8rem, 25vw) 0 min(8rem, 20vw) 0;
   width: min(auto, 80vw);
   height: auto;
+}
+.header__logo {
+  transform: scale(1.1);
+  animation: 0.25s logo 1.25s linear;
+  animation-fill-mode: forwards;
+}
+body.loading .header__logo {
+  animation: none;
+}
+// small zoom-out animation
+@keyframes logo {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /****************************************/

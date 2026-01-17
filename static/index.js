@@ -35,7 +35,7 @@ async function hideLoader() {
   );
 
   // Reveal the page
-  loader.classList.add('loader--hidden');
+  document.body.classList.remove('loading');
 
   // Remove from DOM after transition
   loader.addEventListener('transitionend', () => {

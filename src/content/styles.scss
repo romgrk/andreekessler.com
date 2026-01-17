@@ -89,7 +89,7 @@ body.loading .loader {
 
 .navbar {
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   top: 0;
   left: 0;
   width: 100%;
@@ -188,8 +188,10 @@ body.loading .header__logo {
   margin-top: -0.1rem;
 }
 .about__image {
-  width: 12rem;
-  height: 12rem;
+  --size: 12rem;
+  position: relative;
+  width: var(--size);
+  height: var(--size);
   border-radius: 50%;
   float: left;
   shape-outside: circle(50%);
@@ -199,6 +201,28 @@ body.loading .header__logo {
   padding: 2px;
   border: 2px solid;
   @apply border-neutral-400;
+}
+.about__image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.about__image::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  width: calc(var(--size) + 4rem);
+  height: calc(var(--size) + 4rem);
+  border: 4rem solid var(--color-neutral-800);
+  background-color: transparent;
+  opacity: 0.4;
+  box-sizing: content-box;
 }
 .about__description {
   @apply text-lg;
@@ -218,8 +242,7 @@ body.loading .header__logo {
 
 @media screen and (max-width: 600px) {
   .about__image {
-    width: 8rem;
-    height: 8rem;
+    --size: 8rem;
     margin: 1rem 1rem 1rem 0;
   }
   .about__description {
@@ -255,6 +278,7 @@ body.loading .header__logo {
 
 .project__text {
   position: absolute;
+  z-index: 1;
   top: 0;
   left: 0;
   /* min-width: 20rem; */
